@@ -63,23 +63,7 @@ public class tests {
         forSaleService.saveForSale(forSaleSaveDto);
     }
 
-    @Test
-    public void getForSaleByUserId() {
-        String userId = "testid";
-        List<ForSale> forSales = forSaleService.getForSaleByUserId(userId);
 
-        System.out.println("==========" + forSales.size());
-        System.out.println("==========" + forSales.get(0).getPrice());
-        System.out.println("==========" + forSales.get(1).getPrice());
-    }
-
-    @Test
-    public void getSearchForSaleByAddress() {
-        /*String address = "서울노원구";
-        List<ForSale> forSales = forSaleService.getSearchForSaleByAddress(address);
-
-        System.out.println("==========" + forSales.size());*/
-    }
 
     @Test
     public void saveShopping() {

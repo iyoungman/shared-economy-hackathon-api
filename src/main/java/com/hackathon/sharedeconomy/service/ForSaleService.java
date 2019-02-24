@@ -55,17 +55,6 @@ public class ForSaleService {
         imageRepository.saveAll(images);
     }
 
-    public List<ForSale> getForSaleByUserId(String userId) {
-        User user = loginService.findById(userId);
-        String address = user.getAddress();
-
-        return forSaleRepository.getForSaleByUserId(address);
-    }
-
-    public List<ForSale> getForSaleByAddress(String address) {
-        return forSaleRepository.getSearchForSaleByAddress(address);
-    }
-
     public List<ForSaleResponseDto> getForSaleResponseDtos(ForSaleRequestDto forSaleRequestDto) {
         return forSaleRepository.getForSaleResponseDtos(forSaleRequestDto);
     }
