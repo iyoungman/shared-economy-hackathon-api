@@ -1,11 +1,11 @@
 package com.hackathon.sharedeconomy.service;
 
-import com.hackathon.sharedeconomy.domain.dto.ForSaleRequestDto;
-import com.hackathon.sharedeconomy.domain.dto.ForSaleResponseDto;
-import com.hackathon.sharedeconomy.domain.dto.ForSaleSaveDto;
-import com.hackathon.sharedeconomy.domain.entity.ForSale;
-import com.hackathon.sharedeconomy.domain.entity.Image;
-import com.hackathon.sharedeconomy.domain.entity.User;
+import com.hackathon.sharedeconomy.model.dto.ForSaleRequestDto;
+import com.hackathon.sharedeconomy.model.dto.ForSaleResponseDto;
+import com.hackathon.sharedeconomy.model.dto.ForSaleSaveDto;
+import com.hackathon.sharedeconomy.model.entity.ForSale;
+import com.hackathon.sharedeconomy.model.entity.Image;
+import com.hackathon.sharedeconomy.model.entity.User;
 import com.hackathon.sharedeconomy.repository.ForSaleRepository;
 import com.hackathon.sharedeconomy.repository.ImageRepository;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,7 @@
-package com.hackathon.sharedeconomy.domain.entity;
+package com.hackathon.sharedeconomy.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.hackathon.sharedeconomy.domain.enums.RoleType;
+import com.hackathon.sharedeconomy.model.enums.RoleType;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;

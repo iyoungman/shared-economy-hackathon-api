@@ -1,7 +1,7 @@
 package com.hackathon.sharedeconomy.service;
 
-import com.hackathon.sharedeconomy.domain.dto.SignupDto;
-import com.hackathon.sharedeconomy.domain.entity.User;
+import com.hackathon.sharedeconomy.model.dto.SignupDto;
+import com.hackathon.sharedeconomy.model.entity.User;
 import com.hackathon.sharedeconomy.exception.UserDefineException;
 import com.hackathon.sharedeconomy.repository.LoginRepository;
 import org.springframework.stereotype.Service;

@@ -1,8 +1,8 @@
 package com.hackathon.sharedeconomy.controller;
 
-import com.hackathon.sharedeconomy.domain.dto.LoginDto;
-import com.hackathon.sharedeconomy.domain.dto.SignupDto;
-import com.hackathon.sharedeconomy.domain.entity.User;
+import com.hackathon.sharedeconomy.model.dto.LoginDto;
+import com.hackathon.sharedeconomy.model.dto.SignupDto;
+import com.hackathon.sharedeconomy.model.entity.User;
 import com.hackathon.sharedeconomy.service.LoginService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

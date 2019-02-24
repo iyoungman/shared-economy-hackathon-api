@@ -1,4 +1,4 @@
-package com.hackathon.sharedeconomy.domain.entity;
+package com.hackathon.sharedeconomy.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Builder;

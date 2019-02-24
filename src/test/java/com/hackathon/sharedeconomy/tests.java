@@ -1,10 +1,10 @@
 package com.hackathon.sharedeconomy;
 
-import com.hackathon.sharedeconomy.domain.dto.ForSaleRequestDto;
-import com.hackathon.sharedeconomy.domain.dto.ForSaleSaveDto;
-import com.hackathon.sharedeconomy.domain.dto.ShoppingSaveDto;
-import com.hackathon.sharedeconomy.domain.entity.ForSale;
-import com.hackathon.sharedeconomy.domain.entity.User;
+import com.hackathon.sharedeconomy.model.dto.ForSaleRequestDto;
+import com.hackathon.sharedeconomy.model.dto.ForSaleSaveDto;
+import com.hackathon.sharedeconomy.model.dto.ShoppingSaveDto;
+import com.hackathon.sharedeconomy.model.entity.ForSale;
+import com.hackathon.sharedeconomy.model.entity.User;
 import com.hackathon.sharedeconomy.service.ForSaleService;
 import com.hackathon.sharedeconomy.service.LoginService;
 import com.hackathon.sharedeconomy.service.ShoppingService;

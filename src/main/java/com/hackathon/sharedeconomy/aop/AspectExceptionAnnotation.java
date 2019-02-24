@@ -1,4 +1,4 @@
-package com.hackathon.sharedeconomy.aspect;
+package com.hackathon.sharedeconomy.aop;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

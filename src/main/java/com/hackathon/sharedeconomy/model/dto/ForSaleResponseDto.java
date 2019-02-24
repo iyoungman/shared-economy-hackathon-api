@@ -1,6 +1,6 @@
-package com.hackathon.sharedeconomy.domain.dto;
+package com.hackathon.sharedeconomy.model.dto;
 
-import com.hackathon.sharedeconomy.domain.entity.ForSale;
+import com.hackathon.sharedeconomy.model.entity.ForSale;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;

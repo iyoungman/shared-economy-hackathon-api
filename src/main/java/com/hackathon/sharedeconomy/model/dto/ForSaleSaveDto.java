@@ -1,4 +1,4 @@
-package com.hackathon.sharedeconomy.domain.dto;
+package com.hackathon.sharedeconomy.model.dto;
 
 import lombok.Builder;
 import lombok.Getter;

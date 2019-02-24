@@ -1,4 +1,4 @@
-package com.hackathon.sharedeconomy.aspect;
+package com.hackathon.sharedeconomy.aop;
 
 import com.hackathon.sharedeconomy.exception.UserDefineException;
 import org.aspectj.lang.ProceedingJoinPoint;

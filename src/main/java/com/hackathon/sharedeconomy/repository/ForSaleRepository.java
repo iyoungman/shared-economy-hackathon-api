@@ -1,6 +1,6 @@
 package com.hackathon.sharedeconomy.repository;
 
-import com.hackathon.sharedeconomy.domain.entity.ForSale;
+import com.hackathon.sharedeconomy.model.entity.ForSale;
 import com.hackathon.sharedeconomy.repository.custom.ForSaleRepositoryCustom;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

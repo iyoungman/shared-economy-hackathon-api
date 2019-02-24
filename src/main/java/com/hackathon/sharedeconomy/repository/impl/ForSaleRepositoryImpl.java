@@ -1,10 +1,10 @@
 package com.hackathon.sharedeconomy.repository.impl;
 
-import com.hackathon.sharedeconomy.domain.dto.ForSaleRequestDto;
-import com.hackathon.sharedeconomy.domain.dto.ForSaleResponseDto;
-import com.hackathon.sharedeconomy.domain.entity.ForSale;
-import com.hackathon.sharedeconomy.domain.entity.QUser;
-import com.hackathon.sharedeconomy.domain.entity.User;
+import com.hackathon.sharedeconomy.model.dto.ForSaleRequestDto;
+import com.hackathon.sharedeconomy.model.dto.ForSaleResponseDto;
+import com.hackathon.sharedeconomy.model.entity.ForSale;
+import com.hackathon.sharedeconomy.model.entity.QUser;
+import com.hackathon.sharedeconomy.model.entity.User;
 import com.hackathon.sharedeconomy.repository.custom.ForSaleRepositoryCustom;
 import com.hackathon.sharedeconomy.service.LoginService;
 import com.querydsl.core.types.Projections;
@@ -16,7 +16,7 @@ import org.springframework.util.StringUtils;
 
 import java.util.List;
 
-import static com.hackathon.sharedeconomy.domain.entity.QForSale.forSale;
+import static com.hackathon.sharedeconomy.model.entity.QForSale.forSale;
 
 /**
  * Created by YoungMan on 2019-02-23.

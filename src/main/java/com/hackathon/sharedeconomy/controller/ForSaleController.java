@@ -1,8 +1,8 @@
 package com.hackathon.sharedeconomy.controller;
 
-import com.hackathon.sharedeconomy.domain.dto.ForSaleRequestDto;
-import com.hackathon.sharedeconomy.domain.dto.ForSaleResponseDto;
-import com.hackathon.sharedeconomy.domain.dto.ForSaleSaveDto;
+import com.hackathon.sharedeconomy.model.dto.ForSaleRequestDto;
+import com.hackathon.sharedeconomy.model.dto.ForSaleResponseDto;
+import com.hackathon.sharedeconomy.model.dto.ForSaleSaveDto;
 import com.hackathon.sharedeconomy.service.ForSaleService;
 import org.springframework.web.bind.annotation.*;
 

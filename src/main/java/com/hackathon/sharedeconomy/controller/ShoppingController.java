@@ -1,6 +1,6 @@
 package com.hackathon.sharedeconomy.controller;
 
-import com.hackathon.sharedeconomy.domain.dto.ShoppingSaveDto;
+import com.hackathon.sharedeconomy.model.dto.ShoppingSaveDto;
 import com.hackathon.sharedeconomy.service.ShoppingService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

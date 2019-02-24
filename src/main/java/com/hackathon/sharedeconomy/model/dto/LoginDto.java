@@ -1,6 +1,6 @@
-package com.hackathon.sharedeconomy.domain.dto;
+package com.hackathon.sharedeconomy.model.dto;
 
-import com.hackathon.sharedeconomy.domain.entity.User;
+import com.hackathon.sharedeconomy.model.entity.User;
 import lombok.*;
 
 @Getter

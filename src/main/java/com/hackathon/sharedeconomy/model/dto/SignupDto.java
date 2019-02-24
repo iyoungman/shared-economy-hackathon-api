@@ -1,7 +1,7 @@
-package com.hackathon.sharedeconomy.domain.dto;
+package com.hackathon.sharedeconomy.model.dto;
 
-import com.hackathon.sharedeconomy.domain.entity.User;
-import com.hackathon.sharedeconomy.domain.enums.RoleType;
+import com.hackathon.sharedeconomy.model.entity.User;
+import com.hackathon.sharedeconomy.model.enums.RoleType;
 import lombok.*;
 
 @Getter

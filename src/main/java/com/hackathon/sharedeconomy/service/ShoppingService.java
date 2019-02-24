@@ -1,7 +1,7 @@
 package com.hackathon.sharedeconomy.service;
 
-import com.hackathon.sharedeconomy.domain.dto.ShoppingSaveDto;
-import com.hackathon.sharedeconomy.domain.entity.Shopping;
+import com.hackathon.sharedeconomy.model.dto.ShoppingSaveDto;
+import com.hackathon.sharedeconomy.model.entity.Shopping;
 import com.hackathon.sharedeconomy.repository.ShoppingRepository;
 import org.springframework.stereotype.Service;
 

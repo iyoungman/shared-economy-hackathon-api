@@ -1,7 +1,7 @@
 package com.hackathon.sharedeconomy.repository.custom;
 
-import com.hackathon.sharedeconomy.domain.dto.ForSaleRequestDto;
-import com.hackathon.sharedeconomy.domain.dto.ForSaleResponseDto;
+import com.hackathon.sharedeconomy.model.dto.ForSaleRequestDto;
+import com.hackathon.sharedeconomy.model.dto.ForSaleResponseDto;
 
 import java.util.List;
 

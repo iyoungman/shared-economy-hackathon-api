@@ -1,4 +1,4 @@
-package com.hackathon.sharedeconomy.domain.entity;
+package com.hackathon.sharedeconomy.model.entity;
 
 /**
  * Created by YoungMan on 2019-02-14.
@@ -6,7 +6,7 @@ package com.hackathon.sharedeconomy.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.hackathon.sharedeconomy.domain.enums.SaleType;
+import com.hackathon.sharedeconomy.model.enums.SaleType;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;

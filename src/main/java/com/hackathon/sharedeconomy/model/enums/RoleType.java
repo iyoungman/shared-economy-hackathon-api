@@ -1,4 +1,4 @@
-package com.hackathon.sharedeconomy.domain.enums;
+package com.hackathon.sharedeconomy.model.enums;
 
 /**
  * Created by YoungMan on 2019-02-14.

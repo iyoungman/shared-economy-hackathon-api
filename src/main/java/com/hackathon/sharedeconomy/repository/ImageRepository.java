@@ -1,6 +1,6 @@
 package com.hackathon.sharedeconomy.repository;
 
-import com.hackathon.sharedeconomy.domain.entity.Image;
+import com.hackathon.sharedeconomy.model.entity.Image;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
