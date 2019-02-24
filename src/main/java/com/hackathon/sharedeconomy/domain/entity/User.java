@@ -1,5 +1,6 @@
 package com.hackathon.sharedeconomy.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.hackathon.sharedeconomy.domain.enums.RoleType;
 import lombok.Builder;
 import lombok.Getter;
@@ -27,9 +28,11 @@ public class User {
     private String address;
 
     @OneToMany(mappedBy = "user")
+    @JsonManagedReference
     private List<ForSale> forSales = new ArrayList<>();
 
     @OneToMany(mappedBy = "user")
+    @JsonManagedReference
     private List<Shopping> shoppings = new ArrayList<>();
 
     @Enumerated(value = EnumType.STRING)

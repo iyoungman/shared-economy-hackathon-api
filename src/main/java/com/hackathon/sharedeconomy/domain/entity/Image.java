@@ -1,5 +1,6 @@
 package com.hackathon.sharedeconomy.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,12 +19,12 @@ public class Image {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long imageId;
+    private Long id;
 
     private String path;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "sale_id")
+    @JsonBackReference
     private ForSale forSale;
 
     public Image() {

@@ -4,6 +4,8 @@ package com.hackathon.sharedeconomy.domain.entity;
  * Created by YoungMan on 2019-02-14.
  */
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.hackathon.sharedeconomy.domain.enums.SaleType;
 import lombok.Builder;
 import lombok.Getter;
@@ -23,7 +25,7 @@ public class ForSale {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long saleId;
+    private Long id;
 
     private Long price;
 
@@ -33,13 +35,16 @@ public class ForSale {
     private String saleType = SaleType.SALE.toString();
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "user_id")
+    @JsonBackReference
     private User user;
 
     @OneToMany(mappedBy = "forSale", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Image> images = new ArrayList<>();
 
     @OneToMany(mappedBy = "forSale")
+    @JsonManagedReference
     private List<Shopping> shoppings = new ArrayList<>();
 
     public ForSale() {
@@ -58,7 +63,6 @@ public class ForSale {
     @Override
     public String toString() {
         return "ForSale{" +
-                "saleId=" + saleId +
                 ", price=" + price +
                 ", name='" + name + '\'' +
                 ", saleType=" + saleType +

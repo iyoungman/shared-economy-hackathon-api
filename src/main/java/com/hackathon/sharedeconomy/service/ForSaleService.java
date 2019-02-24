@@ -1,5 +1,6 @@
 package com.hackathon.sharedeconomy.service;
 
+import com.hackathon.sharedeconomy.domain.dto.ForSaleRequestDto;
 import com.hackathon.sharedeconomy.domain.dto.ForSaleResponseDto;
 import com.hackathon.sharedeconomy.domain.dto.ForSaleSaveDto;
 import com.hackathon.sharedeconomy.domain.entity.ForSale;
@@ -65,8 +66,8 @@ public class ForSaleService {
         return forSaleRepository.getSearchForSaleByAddress(address);
     }
 
-    public List<ForSaleResponseDto> getForSaleResponseDtos(String userId, String address) {
-        return forSaleRepository.getForSaleResponseDtos(userId,address);
+    public List<ForSaleResponseDto> getForSaleResponseDtos(ForSaleRequestDto forSaleRequestDto) {
+        return forSaleRepository.getForSaleResponseDtos(forSaleRequestDto);
     }
 
 
