@@ -40,11 +40,11 @@ public class ForSaleRepositoryImpl extends QuerydslRepositorySupport implements 
         return queryFactory.select(Projections.constructor(ForSaleResponseDto.class, forSale, user.id, user.phoneNumber, user.address))
                 .from(forSale)
                 .join(forSale.user, user)
-                .where(likeUserAddress(forSaleRequestDto.getUserId()), likeAddress(forSaleRequestDto.getAddress()))
+                .where(eqUserAddress(forSaleRequestDto.getUserId()), likeSearchAddress(forSaleRequestDto.getAddress()))
                 .fetch();
     }
 
-    private BooleanExpression likeUserAddress(String userId) {
+    private BooleanExpression eqUserAddress(String userId) {
         if (StringUtils.isEmpty(userId)) {
             return null;
         }
@@ -53,7 +53,7 @@ public class ForSaleRepositoryImpl extends QuerydslRepositorySupport implements 
         return user.address.eq(loginUser.getAddress());
     }
 
-    private BooleanExpression likeAddress(String address) {
+    private BooleanExpression likeSearchAddress(String address) {
         if (StringUtils.isEmpty(address)) {
             return null;
         }

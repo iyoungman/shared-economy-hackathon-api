@@ -19,7 +19,7 @@ public class ForSaleController {
     }
 
     @GetMapping("/id/{id}")
-    public List<ForSaleResponseDto> getForSaleById(@PathVariable("id") String userId){
+    public List<ForSaleResponseDto> getForSaleById(@PathVariable("id") String userId) {
         ForSaleRequestDto forSaleRequestDto = ForSaleRequestDto.builder()
                 .userId(userId)
                 .build();
@@ -28,7 +28,7 @@ public class ForSaleController {
     }
 
     @GetMapping("/address/{address}")
-    public List<ForSaleResponseDto> getForSaleListByRegion(@PathVariable("address") String address){
+    public List<ForSaleResponseDto> getForSaleListByRegion(@PathVariable("address") String address) {
         ForSaleRequestDto forSaleRequestDto = ForSaleRequestDto.builder()
                 .address(address)
                 .build();
@@ -37,12 +37,12 @@ public class ForSaleController {
     }
 
     @PostMapping("/save")
-    public void saveForSale(@RequestBody ForSaleSaveDto forSaleSaveDto){
+    public void saveForSale(@RequestBody ForSaleSaveDto forSaleSaveDto) {
         forSaleService.saveForSale(forSaleSaveDto);
     }
 
     @PostMapping("/update")
-    public void updateForSale(@RequestBody ForSaleSaveDto forSaleSaveDto){
+    public void updateForSale(@RequestBody ForSaleSaveDto forSaleSaveDto) {
 
     }
 }

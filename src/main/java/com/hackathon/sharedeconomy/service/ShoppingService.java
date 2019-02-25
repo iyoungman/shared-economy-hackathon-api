@@ -22,10 +22,6 @@ public class ShoppingService {
         this.forSaleService = forSaleService;
     }
 
-    /*
-     * 장바구니 추가
-     * userId, forSaleId
-     */
     public void saveShopping(ShoppingSaveDto shoppingSaveDto) {
         Shopping shopping = Shopping.builder()
                 .forSale(forSaleService.findByName(shoppingSaveDto.getName()))

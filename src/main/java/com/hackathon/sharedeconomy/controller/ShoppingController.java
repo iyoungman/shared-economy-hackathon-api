@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-@RequestMapping(value = "/shopping")
+@RequestMapping(value = "/shared/shopping")
 public class ShoppingController {
 
     private ShoppingService shoppingService;
