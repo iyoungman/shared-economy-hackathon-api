@@ -35,13 +35,13 @@ public class tests {
     private ShoppingService shoppingService;
 
 
-    @Test
+    /*@Test
     public void findByName() {
         String name = "매물";
-        ForSale forSale = forSaleService.findByName(name);
+        ForSale forSale = forSaleService.findByNameAndUserId(name, "testid");
         System.out.println("=========================");
         System.out.println(forSale.getName());
-    }
+    }*/
 
     @Test
     public void saveForSale() {
@@ -87,6 +87,12 @@ public class tests {
                 .build();*/
 
         forSaleService.getForSaleResponseDtos(forSaleRequestDto);
+    }
+
+    @Test
+    public void findByNameAndUserId() {
+        ForSale forSale = forSaleService.findByNameAndUserId("매물", "testid");
+        System.out.println(forSale.getUser().getId());
     }
 
 

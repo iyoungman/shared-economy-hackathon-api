@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,7 +18,7 @@ public class ForSaleSaveDto {
     private Long price;
     private String name;
     private String userId;
-    private List<String> imagePath;
+    private List<String> imagePath = new ArrayList<>();
 
     public ForSaleSaveDto() {
     }

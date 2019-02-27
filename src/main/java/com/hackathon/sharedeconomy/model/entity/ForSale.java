@@ -29,7 +29,7 @@ public class ForSale {
 
     private Long price;
 
-    @Column(unique = true)
+//    @Column(unique = true)
     private String name;
 
     private String saleType = SaleType.SALE.toString();

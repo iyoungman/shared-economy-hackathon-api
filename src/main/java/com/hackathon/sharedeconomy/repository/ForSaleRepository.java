@@ -14,7 +14,11 @@ import java.util.List;
 
 public interface ForSaleRepository extends JpaRepository<ForSale, Long>, ForSaleRepositoryCustom {
 
-    ForSale findByName(@Param("name") String name);
+    @Query("select f from ForSale f join f.user u where f.name = :name and u.id = :forSaleUserId")
+    ForSale findByNameAndUserId(@Param("name") String name, @Param("forSaleUserId") String forSaleUserId);
+
+    @Query("select f from ForSale f join f.user u where u.id = :forSaleUserId")
+    ForSale findByUserId(@Param("forSaleUserId") String forSaleUserId);
 
     @Query("select f from ForSale f join f.user u where u.address like concat('%',:address,'%')")
     List<ForSale> getForSaleByUserId(@Param("address") String address);

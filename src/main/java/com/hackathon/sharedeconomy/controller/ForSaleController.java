@@ -36,12 +36,12 @@ public class ForSaleController {
         return forSaleService.getForSaleResponseDtos(forSaleRequestDto);
     }
 
-    @PostMapping("/save")
+    @PostMapping
     public void saveForSale(@RequestBody ForSaleSaveDto forSaleSaveDto) {
         forSaleService.saveForSale(forSaleSaveDto);
     }
 
-    @PostMapping("/update")
+    @PutMapping
     public void updateForSale(@RequestBody ForSaleSaveDto forSaleSaveDto) {
 
     }
