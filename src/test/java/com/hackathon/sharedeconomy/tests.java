@@ -17,10 +17,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by YoungMan on 2019-02-15.
- */
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class tests {
@@ -33,15 +29,6 @@ public class tests {
 
     @Autowired
     private ShoppingService shoppingService;
-
-
-    /*@Test
-    public void findByName() {
-        String name = "매물";
-        ForSale forSale = forSaleService.findByNameAndUserId(name, "testid");
-        System.out.println("=========================");
-        System.out.println(forSale.getName());
-    }*/
 
     @Test
     public void saveForSale() {
@@ -65,7 +52,7 @@ public class tests {
 
 
 
-    @Test
+@Test
     public void saveShopping() {
         ShoppingSaveDto shoppingSaveDto = ShoppingSaveDto.builder()
                 .name("매물")
@@ -73,8 +60,8 @@ public class tests {
                 .build();
 
         shoppingService.saveShopping(shoppingSaveDto);
-
     }
+
 
     @Test
     public void getForSaleResponse() {
@@ -86,6 +73,7 @@ public class tests {
                 .address("중계1동")
                 .build();*/
 
+
         forSaleService.getForSaleResponseDtos(forSaleRequestDto);
     }
 
@@ -94,6 +82,25 @@ public class tests {
         ForSale forSale = forSaleService.findByNameAndUserId("매물", "testid");
         System.out.println(forSale.getUser().getId());
     }
+
+
+/*@Autowired
+    private ImageService imageService;
+    private final String WINDOW_PATH = "C:\\testimg\\";
+
+
+@Test
+    public void imageEncodingTest() {
+        String strBase64 = imageService.convertImgFileToBase64("test.png");
+        System.out.println("=====================");
+        System.out.println(strBase64);
+    }
+
+    @Test
+    public void imageDecodingTest() {
+        String strBase64 = imageService.convertImgFileToBase64("test.png");
+//        imageService.convertBase64ToImgFile(strBase64);
+    }*/
 
 
 }

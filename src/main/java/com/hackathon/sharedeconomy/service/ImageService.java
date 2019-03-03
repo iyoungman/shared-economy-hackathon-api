@@ -32,7 +32,7 @@ public class ImageService {
      */
     public String convertBase64ToImgFile(String strBase64, String writeFileName) {
         byte[] decodedBytes = Base64.getDecoder().decode(strBase64);
-        String writeFilePath = WINDOW_PATH + writeFileName + ".png";
+        String writeFilePath = LINUX_PATH + writeFileName + ".png";
 
         try {
             FileUtils.writeByteArrayToFile(new File(writeFilePath), decodedBytes);
