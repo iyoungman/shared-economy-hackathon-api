@@ -6,6 +6,7 @@ import com.hackathon.sharedeconomy.model.dto.ForSaleResponseDto;
 import com.hackathon.sharedeconomy.model.dto.ForSaleSaveDto;
 import com.hackathon.sharedeconomy.model.entity.ForSale;
 import com.hackathon.sharedeconomy.model.entity.Image;
+import com.hackathon.sharedeconomy.model.entity.Shopping;
 import com.hackathon.sharedeconomy.model.entity.User;
 import com.hackathon.sharedeconomy.model.enums.SaleType;
 import com.hackathon.sharedeconomy.repository.ForSaleRepository;
@@ -87,8 +88,7 @@ public class ForSaleService {
      */
     public void updateForSale(ForSaleSaveDto forSaleSaveDto) {
         ForSale forSale = findByUserId(forSaleSaveDto.getUserId());
-        forSale.setName(forSaleSaveDto.getName());
-        forSale.setPrice(forSaleSaveDto.getPrice());
+        forSale.updateForSale(forSaleSaveDto);
         forSaleRepository.save(forSale);
     }
 
@@ -104,18 +104,18 @@ public class ForSaleService {
             List<Image> images = forSale.getImages();
 
             for (Image image : images) {
-                image.setPath(imageService.convertImgFileToBase64(image.getPath()));
+                image.updatePath(imageService.convertImgFileToBase64(image.getPath()));
             }
         }
 
         return forSaleResponseDtos;
     }
 
-    public void changeSaleType(String userId) {
+    public void updateSaleType(String userId) {
         ForSale forSale = findByUserId(userId);
 
         if (forSale.getSaleType() == SaleType.SALE) {
-            forSale.setSaleType(SaleType.COMPLETE);
+            forSale.updateSaleType();
             forSaleRepository.save(forSale);
         }
     }

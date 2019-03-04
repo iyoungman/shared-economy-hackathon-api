@@ -48,7 +48,7 @@ public class ImageService {
      * return : base64
      */
     public String convertImgFileToBase64(String readFilePath) {
-//        String readFilePath = WINDOW_PATH + readFileName;
+//      String readFilePath = WINDOW_PATH + readFileName;
         byte[] fileContent = new byte[0];
 
         try {

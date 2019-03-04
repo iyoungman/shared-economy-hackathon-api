@@ -1,8 +1,7 @@
 package com.hackathon.sharedeconomy.service;
 
-import com.hackathon.sharedeconomy.model.dto.SignupDto;
-import com.hackathon.sharedeconomy.model.entity.User;
 import com.hackathon.sharedeconomy.exception.UserDefineException;
+import com.hackathon.sharedeconomy.model.entity.User;
 import com.hackathon.sharedeconomy.repository.LoginRepository;
 import org.springframework.stereotype.Service;
 
@@ -36,7 +35,7 @@ public class LoginService {
                 .orElseThrow(() -> new UserDefineException("해당 Id의 유저가 없습니다."));
     }
 
-    public SignupDto update(SignupDto dto) {
+    /*public SignupDto update(SignupDto dto) {
         User user = new User();
         if (loginRepository.findById(dto.getId()).isPresent())
             user = loginRepository.save(dto.toEntity());
@@ -45,7 +44,7 @@ public class LoginService {
                 .pw(user.getPw())
                 .name(user.getName())
                 .phoneNumber(user.getPhoneNumber())
-//                .role(user.getgetRole())
+                .role(user.getgetRole())
                 .build();
-    }
+    }*/
 }

@@ -68,7 +68,7 @@ public class ForSaleController {
     @ApiOperation(value = "해당 유저의 매물 판매완료로 변경")
     @PutMapping("/id/{id}")
     public void changeSaleType(@PathVariable("id") String userId) {
-        forSaleService.changeSaleType(userId);
+        forSaleService.updateSaleType(userId);
     }
 
 
