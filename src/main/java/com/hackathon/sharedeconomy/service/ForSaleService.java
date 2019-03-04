@@ -7,8 +7,10 @@ import com.hackathon.sharedeconomy.model.dto.ForSaleSaveDto;
 import com.hackathon.sharedeconomy.model.entity.ForSale;
 import com.hackathon.sharedeconomy.model.entity.Image;
 import com.hackathon.sharedeconomy.model.entity.User;
+import com.hackathon.sharedeconomy.model.enums.SaleType;
 import com.hackathon.sharedeconomy.repository.ForSaleRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,14 +41,18 @@ public class ForSaleService {
 
     /*
      * 한 사람당 하나의 매물만 올릴 수 있을 때 사용
+     * 현재 판매되고 있는 매물만 찾는다.
      */
     public ForSale findByUserId(String forSaleUserId) {
         return forSaleRepository.findByUserId(forSaleUserId);
     }
 
+    /*
+     * 연관 관계에 의해 imageService의 사진이 저장되면서 forSale정보가 등록된다.
+     */
     public void saveForSale(ForSaleSaveDto forSaleSaveDto) {
-        if(existForSaleName(forSaleSaveDto.getName(), forSaleSaveDto.getUserId())) {
-            throw new UserDefineException("해당 유저에 동일한 이름의 매물이 존재합니다.");
+        if (!isEmptyForSaleByUserId(forSaleSaveDto.getUserId())) {
+            throw new UserDefineException("해당 유저의 매물이 등록되어 있습니다.");
         }
 
         User user = loginService.findById(forSaleSaveDto.getUserId());
@@ -60,7 +66,7 @@ public class ForSaleService {
                 .build();
 
         for (int i = 0; i < imageList.size(); i++) {
-            String writeFileName = user.getId() + String.valueOf(i);//file 이름 저장 형식 : 중복되지 않기위해 userId + 0,1,2..
+            String writeFileName = user.getId() + "img" + String.valueOf(i);//file 이름 저장 형식 : 중복되지 않기위해 userId + img + 0,1,2..
             String writeFilePath = imageService.convertBase64ToImgFile(imageList.get(i), writeFileName);
 
             images.add(Image.builder()
@@ -72,11 +78,18 @@ public class ForSaleService {
         imageService.saveAll(images);
     }
 
-    private Boolean existForSaleName(String name, String forSaleUserId) {
-        if(findByNameAndUserId(name, forSaleUserId) != null)
-            return true;
-        else
-            return false;
+    private Boolean isEmptyForSaleByUserId(String forSaleUserId) {
+        return ObjectUtils.isEmpty(findByUserId(forSaleUserId));
+    }
+
+    /*
+     * 이미지 수정 보류
+     */
+    public void updateForSale(ForSaleSaveDto forSaleSaveDto) {
+        ForSale forSale = findByUserId(forSaleSaveDto.getUserId());
+        forSale.setName(forSaleSaveDto.getName());
+        forSale.setPrice(forSaleSaveDto.getPrice());
+        forSaleRepository.save(forSale);
     }
 
     public List<ForSaleResponseDto> getForSaleResponseDtos(ForSaleRequestDto forSaleRequestDto) {
@@ -86,7 +99,7 @@ public class ForSaleService {
 
     private List<ForSaleResponseDto> convertImgToBase64(List<ForSaleResponseDto> forSaleResponseDtos) {
 
-        for(ForSaleResponseDto forSaleResponseDto : forSaleResponseDtos) {
+        for (ForSaleResponseDto forSaleResponseDto : forSaleResponseDtos) {
             ForSale forSale = forSaleResponseDto.getForSale();
             List<Image> images = forSale.getImages();
 
@@ -97,5 +110,15 @@ public class ForSaleService {
 
         return forSaleResponseDtos;
     }
+
+    public void changeSaleType(String userId) {
+        ForSale forSale = findByUserId(userId);
+
+        if (forSale.getSaleType() == SaleType.SALE) {
+            forSale.setSaleType(SaleType.COMPLETE);
+            forSaleRepository.save(forSale);
+        }
+    }
+
 
 }

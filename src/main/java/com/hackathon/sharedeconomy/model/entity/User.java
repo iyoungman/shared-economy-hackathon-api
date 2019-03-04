@@ -27,6 +27,8 @@ public class User {
 
     private String address;
 
+    private Integer age;
+
     @OneToMany(mappedBy = "user")
     @JsonManagedReference
     private List<ForSale> forSales = new ArrayList<>();
@@ -35,19 +37,20 @@ public class User {
     @JsonManagedReference
     private List<Shopping> shoppings = new ArrayList<>();
 
-    @Enumerated(value = EnumType.STRING)
+    @Enumerated(EnumType.STRING)
     private RoleType role;
 
     public User() {
     }
 
     @Builder
-    public User(String id, String pw, String name, String phoneNumber, String address, List<ForSale> forSales, List<Shopping> shoppings, RoleType role) {
+    public User(String id, String pw, String name, String phoneNumber, String address, Integer age, List<ForSale> forSales, List<Shopping> shoppings, RoleType role) {
         this.id = id;
         this.pw = pw;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.address = address;
+        this.age = age;
         this.forSales = forSales;
         this.shoppings = shoppings;
         this.role = role;

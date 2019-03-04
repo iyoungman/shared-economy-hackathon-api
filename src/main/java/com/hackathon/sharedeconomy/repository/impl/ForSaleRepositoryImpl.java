@@ -5,6 +5,7 @@ import com.hackathon.sharedeconomy.model.dto.ForSaleResponseDto;
 import com.hackathon.sharedeconomy.model.entity.ForSale;
 import com.hackathon.sharedeconomy.model.entity.QUser;
 import com.hackathon.sharedeconomy.model.entity.User;
+import com.hackathon.sharedeconomy.model.enums.SaleType;
 import com.hackathon.sharedeconomy.repository.custom.ForSaleRepositoryCustom;
 import com.hackathon.sharedeconomy.service.LoginService;
 import com.querydsl.core.types.Projections;
@@ -40,7 +41,7 @@ public class ForSaleRepositoryImpl extends QuerydslRepositorySupport implements 
         return queryFactory.select(Projections.constructor(ForSaleResponseDto.class, forSale, user.id, user.phoneNumber, user.address))
                 .from(forSale)
                 .join(forSale.user, user)
-                .where(eqUserAddress(forSaleRequestDto.getUserId()), likeSearchAddress(forSaleRequestDto.getAddress()))
+                .where(eqUserAddress(forSaleRequestDto.getUserId()), likeSearchAddress(forSaleRequestDto.getAddress()), eqSale())
                 .fetch();
     }
 
@@ -58,5 +59,9 @@ public class ForSaleRepositoryImpl extends QuerydslRepositorySupport implements 
             return null;
         }
         return user.address.contains(address);
+    }
+
+    private BooleanExpression eqSale() {
+        return forSale.saleType.eq(SaleType.SALE);
     }
 }

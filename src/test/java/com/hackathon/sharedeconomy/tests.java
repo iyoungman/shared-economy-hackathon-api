@@ -55,7 +55,6 @@ public class tests {
 @Test
     public void saveShopping() {
         ShoppingSaveDto shoppingSaveDto = ShoppingSaveDto.builder()
-                .name("매물")
                 .userId("testid")
                 .build();
 
@@ -77,11 +76,11 @@ public class tests {
         forSaleService.getForSaleResponseDtos(forSaleRequestDto);
     }
 
-    @Test
+    /*@Test
     public void findByNameAndUserId() {
         ForSale forSale = forSaleService.findByNameAndUserId("매물", "testid");
         System.out.println(forSale.getUser().getId());
-    }
+    }*/
 
 
 /*@Autowired

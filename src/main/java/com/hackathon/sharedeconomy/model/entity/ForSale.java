@@ -6,6 +6,7 @@ package com.hackathon.sharedeconomy.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.hackathon.sharedeconomy.model.enums.RoleType;
 import com.hackathon.sharedeconomy.model.enums.SaleType;
 import lombok.Builder;
 import lombok.Getter;
@@ -31,7 +32,8 @@ public class ForSale {
 
     private String name;
 
-    private String saleType = SaleType.SALE.toString();
+    @Enumerated(EnumType.STRING)
+    private SaleType saleType;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
@@ -53,7 +55,7 @@ public class ForSale {
     public ForSale(Long price, String name, User user, List<Image> images, List<Shopping> shoppings) {
         this.price = price;
         this.name = name;
-        this.saleType = SaleType.SALE.toString();
+        this.saleType = SaleType.SALE;
         this.user = user;
         this.images = images;
         this.shoppings = shoppings;

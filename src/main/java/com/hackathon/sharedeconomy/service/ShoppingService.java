@@ -24,7 +24,7 @@ public class ShoppingService {
 
     public void saveShopping(ShoppingSaveDto shoppingSaveDto) {
         Shopping shopping = Shopping.builder()
-                .forSale(forSaleService.findByNameAndUserId(shoppingSaveDto.getName(), shoppingSaveDto.getForSaleUserId()))
+                .forSale(forSaleService.findByUserId(shoppingSaveDto.getForSaleUserId()))
                 .user(loginService.findById(shoppingSaveDto.getUserId()))
                 .build();
 

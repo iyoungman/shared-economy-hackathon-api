@@ -15,17 +15,17 @@ public class ForSaleResponseDto {
 
     private ForSale forSale;
     private String userId;
-    private String address;
     private String phoneNumber;
+    private String address;
 
     public ForSaleResponseDto() {
     }
 
     @Builder
-    public ForSaleResponseDto(ForSale forSale, String userId, String address, String phoneNumber) {
+    public ForSaleResponseDto(ForSale forSale, String userId, String phoneNumber, String address) {
         this.forSale = forSale;
         this.userId = userId;
-        this.address = address;
         this.phoneNumber = phoneNumber;
+        this.address = address;
     }
 }

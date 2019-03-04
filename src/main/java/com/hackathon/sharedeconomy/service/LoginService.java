@@ -45,7 +45,7 @@ public class LoginService {
                 .pw(user.getPw())
                 .name(user.getName())
                 .phoneNumber(user.getPhoneNumber())
-                .role(user.getRole())
+//                .role(user.getgetRole())
                 .build();
     }
 }

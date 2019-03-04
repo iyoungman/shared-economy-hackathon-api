@@ -17,7 +17,7 @@ public interface ForSaleRepository extends JpaRepository<ForSale, Long>, ForSale
     @Query("select f from ForSale f join f.user u where f.name = :name and u.id = :forSaleUserId")
     ForSale findByNameAndUserId(@Param("name") String name, @Param("forSaleUserId") String forSaleUserId);
 
-    @Query("select f from ForSale f join f.user u where u.id = :forSaleUserId")
+    @Query("select f from ForSale f join f.user u where u.id = :forSaleUserId and f.saleType = 'SALE'")
     ForSale findByUserId(@Param("forSaleUserId") String forSaleUserId);
 
     @Query("select f from ForSale f join f.user u where u.address like concat('%',:address,'%')")
