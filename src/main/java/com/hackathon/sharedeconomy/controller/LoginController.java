@@ -1,12 +1,10 @@
 package com.hackathon.sharedeconomy.controller;
 
-import com.hackathon.sharedeconomy.model.dto.LoginDto;
-import com.hackathon.sharedeconomy.model.dto.SignupDto;
+import com.hackathon.sharedeconomy.model.dto.UserDto;
 import com.hackathon.sharedeconomy.model.entity.User;
 import com.hackathon.sharedeconomy.service.LoginService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,7 +25,7 @@ public class LoginController {
     @ApiOperation(value = "로그인")
     @ApiImplicitParam(name = "loginDto", dataType = "LoginDto")
     @PostMapping("/login")
-    public User login(@RequestBody LoginDto loginDto){
+    public User login(@RequestBody UserDto.Login loginDto){
         return loginService.login(loginDto.toEntity());
     }
 
@@ -35,7 +33,7 @@ public class LoginController {
     @ApiOperation(value = "회원가입")
     @ApiImplicitParam(name = "signupDto", dataType = "SignupDto")
     @PostMapping("/signup")
-    public User signup(@RequestBody SignupDto signupDto){
+    public User signup(@RequestBody UserDto.SingUp signupDto){
         return loginService.signup(signupDto.toEntity());
     }
 

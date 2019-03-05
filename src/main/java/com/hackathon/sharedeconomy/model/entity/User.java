@@ -2,18 +2,16 @@ package com.hackathon.sharedeconomy.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.hackathon.sharedeconomy.model.enums.RoleType;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
 @Table(name = "user_tbl")
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class User {
 
     @Id
@@ -39,9 +37,6 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private RoleType role;
-
-    public User() {
-    }
 
     @Builder
     public User(String id, String pw, String name, String phoneNumber, String address, Integer age, List<ForSale> forSales, List<Shopping> shoppings, RoleType role) {

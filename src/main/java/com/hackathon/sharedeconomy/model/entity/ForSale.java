@@ -6,22 +6,21 @@ package com.hackathon.sharedeconomy.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.hackathon.sharedeconomy.model.enums.RoleType;
+import com.hackathon.sharedeconomy.model.dto.ForSaleDto;
 import com.hackathon.sharedeconomy.model.enums.SaleType;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
-import org.springframework.stereotype.Component;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
 @Table(name = "for_sale_tbl")
-@Component
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ForSale {
 
     @Id
@@ -48,9 +47,6 @@ public class ForSale {
     @JsonManagedReference
     private List<Shopping> shoppings = new ArrayList<>();
 
-    public ForSale() {
-    }
-
     @Builder
     public ForSale(Long price, String name, User user, List<Image> images, List<Shopping> shoppings) {
         this.price = price;
@@ -61,15 +57,12 @@ public class ForSale {
         this.shoppings = shoppings;
     }
 
-    @Override
-    public String toString() {
-        return "ForSale{" +
-                ", price=" + price +
-                ", name='" + name + '\'' +
-                ", saleType=" + saleType +
-                ", user=" + user +
-                ", images=" + images +
-                ", shoppings=" + shoppings +
-                '}';
+    public void updateForSale(ForSaleDto.Save saveDto) {
+        this.price = saveDto.getPrice();
+        this.name = saveDto.getName();
+    }
+
+    public void updateSaleType() {
+        this.saleType = SaleType.COMPLETE;
     }
 }

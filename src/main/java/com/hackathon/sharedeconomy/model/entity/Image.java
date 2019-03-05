@@ -1,9 +1,7 @@
 package com.hackathon.sharedeconomy.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -11,10 +9,10 @@ import javax.persistence.*;
  * Created by YoungMan on 2019-02-14.
  */
 
-@Getter
-@Setter
 @Entity
 @Table(name = "image_tbl")
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Image {
 
     @Id
@@ -27,12 +25,13 @@ public class Image {
     @JsonBackReference
     private ForSale forSale;
 
-    public Image() {
-    }
-
     @Builder
     public Image(String path, ForSale forSale) {
         this.path = path;
         this.forSale = forSale;
+    }
+
+    public void updatePath(String path) {
+        this.path = path;
     }
 }

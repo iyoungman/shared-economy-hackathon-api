@@ -1,9 +1,7 @@
 package com.hackathon.sharedeconomy.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -11,10 +9,10 @@ import javax.persistence.*;
  * Created by YoungMan on 2019-02-14.
  */
 
-@Getter
-@Setter
 @Entity
 @Table(name = "shopping_tbl")
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Shopping {
 
     @Id
@@ -28,9 +26,6 @@ public class Shopping {
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonBackReference
     private ForSale forSale;
-
-    public Shopping() {
-    }
 
     @Builder
     public Shopping(User user, ForSale forSale) {
