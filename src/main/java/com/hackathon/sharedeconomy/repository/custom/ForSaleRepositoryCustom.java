@@ -1,7 +1,6 @@
 package com.hackathon.sharedeconomy.repository.custom;
 
-import com.hackathon.sharedeconomy.model.dto.ForSaleRequestDto;
-import com.hackathon.sharedeconomy.model.dto.ForSaleResponseDto;
+import com.hackathon.sharedeconomy.model.dto.ForSaleDto;
 
 import java.util.List;
 
@@ -11,5 +10,5 @@ import java.util.List;
 
 public interface ForSaleRepositoryCustom {
 
-    List<ForSaleResponseDto> getForSaleResponseDtos(ForSaleRequestDto forSaleRequestDto);
+    List<ForSaleDto.Response> getForSaleResponseDtos(ForSaleDto.Request requestDto);
 }

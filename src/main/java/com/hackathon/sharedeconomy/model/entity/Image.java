@@ -11,8 +11,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "image_tbl")
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Image {
 
     @Id

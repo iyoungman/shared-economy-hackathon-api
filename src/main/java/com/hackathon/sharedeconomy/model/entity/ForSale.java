@@ -6,11 +6,12 @@ package com.hackathon.sharedeconomy.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.hackathon.sharedeconomy.model.dto.ForSaleSaveDto;
-import com.hackathon.sharedeconomy.model.enums.RoleType;
+import com.hackathon.sharedeconomy.model.dto.ForSaleDto;
 import com.hackathon.sharedeconomy.model.enums.SaleType;
-import lombok.*;
-import org.springframework.stereotype.Component;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -18,8 +19,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "for_sale_tbl")
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ForSale {
 
     @Id
@@ -56,9 +57,9 @@ public class ForSale {
         this.shoppings = shoppings;
     }
 
-    public void updateForSale(ForSaleSaveDto forSaleSaveDto) {
-        this.price = forSaleSaveDto.getPrice();
-        this.name = forSaleSaveDto.getName();
+    public void updateForSale(ForSaleDto.Save saveDto) {
+        this.price = saveDto.getPrice();
+        this.name = saveDto.getName();
     }
 
     public void updateSaleType() {

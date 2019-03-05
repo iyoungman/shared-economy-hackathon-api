@@ -11,8 +11,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "shopping_tbl")
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Shopping {
 
     @Id

@@ -10,8 +10,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "user_tbl")
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class User {
 
     @Id
