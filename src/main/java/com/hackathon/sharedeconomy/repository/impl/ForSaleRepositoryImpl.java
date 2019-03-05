@@ -1,6 +1,7 @@
 package com.hackathon.sharedeconomy.repository.impl;
 
-import com.hackathon.sharedeconomy.model.dto.ForSaleDto;
+import com.hackathon.sharedeconomy.model.dto.ForSaleRequestDto;
+import com.hackathon.sharedeconomy.model.dto.ForSaleResponseDto;
 import com.hackathon.sharedeconomy.model.entity.ForSale;
 import com.hackathon.sharedeconomy.model.entity.QUser;
 import com.hackathon.sharedeconomy.model.entity.User;
@@ -36,11 +37,11 @@ public class ForSaleRepositoryImpl extends QuerydslRepositorySupport implements 
     }
 
     @Override
-    public List<ForSaleDto.Response> getForSaleResponseDtos(ForSaleDto.Request requestDto) {
-        return queryFactory.select(Projections.constructor(ForSaleDto.Response.class, forSale, user.id, user.phoneNumber, user.address))
+    public List<ForSaleResponseDto> getForSaleResponseDtos(ForSaleRequestDto forSaleRequestDto) {
+        return queryFactory.select(Projections.constructor(ForSaleResponseDto.class, forSale, user.id, user.phoneNumber, user.address))
                 .from(forSale)
                 .join(forSale.user, user)
-                .where(eqUserAddress(requestDto.getUserId()), likeSearchAddress(requestDto.getAddress()), eqSale())
+                .where(eqUserAddress(forSaleRequestDto.getUserId()), likeSearchAddress(forSaleRequestDto.getAddress()), eqSale())
                 .fetch();
     }
 

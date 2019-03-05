@@ -1,12 +1,21 @@
 package com.hackathon.sharedeconomy;
 
+import com.hackathon.sharedeconomy.model.dto.ForSaleRequestDto;
+import com.hackathon.sharedeconomy.model.dto.ForSaleSaveDto;
+import com.hackathon.sharedeconomy.model.dto.ShoppingSaveDto;
+import com.hackathon.sharedeconomy.model.entity.ForSale;
+import com.hackathon.sharedeconomy.model.entity.User;
 import com.hackathon.sharedeconomy.service.ForSaleService;
 import com.hackathon.sharedeconomy.service.LoginService;
 import com.hackathon.sharedeconomy.service.ShoppingService;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -21,7 +30,7 @@ public class tests {
     @Autowired
     private ShoppingService shoppingService;
 
-    /*@Test
+    @Test
     public void saveForSale() {
         String userId = "testid3";
         User user = loginService.findById(userId);
@@ -39,33 +48,33 @@ public class tests {
                 .build();
 
         forSaleService.saveForSale(forSaleSaveDto);
-    }*/
+    }
 
 
 
-/*@Test
+@Test
     public void saveShopping() {
         ShoppingSaveDto shoppingSaveDto = ShoppingSaveDto.builder()
                 .userId("testid")
                 .build();
 
         shoppingService.saveShopping(shoppingSaveDto);
-    }*/
+    }
 
 
-   /* @Test
+    @Test
     public void getForSaleResponse() {
         ForSaleRequestDto forSaleRequestDto = ForSaleRequestDto.builder()
                 .userId("testid")
                 .build();
 
-        *//*ForSaleRequestDto forSaleRequestDto = ForSaleRequestDto.builder()
+        /*ForSaleRequestDto forSaleRequestDto = ForSaleRequestDto.builder()
                 .address("중계1동")
-                .build();*//*
+                .build();*/
 
 
         forSaleService.getForSaleResponseDtos(forSaleRequestDto);
-    }*/
+    }
 
     /*@Test
     public void findByNameAndUserId() {

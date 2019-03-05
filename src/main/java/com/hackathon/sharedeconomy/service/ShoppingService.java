@@ -1,6 +1,6 @@
 package com.hackathon.sharedeconomy.service;
 
-import com.hackathon.sharedeconomy.model.dto.ShoppingDto;
+import com.hackathon.sharedeconomy.model.dto.ShoppingSaveDto;
 import com.hackathon.sharedeconomy.model.entity.Shopping;
 import com.hackathon.sharedeconomy.repository.ShoppingRepository;
 import org.springframework.stereotype.Service;
@@ -22,10 +22,10 @@ public class ShoppingService {
         this.forSaleService = forSaleService;
     }
 
-    public void saveShopping(ShoppingDto.Save saveDto) {
+    public void saveShopping(ShoppingSaveDto shoppingSaveDto) {
         Shopping shopping = Shopping.builder()
-                .forSale(forSaleService.findByUserId(saveDto.getForSaleUserId()))
-                .user(loginService.findById(saveDto.getUserId()))
+                .forSale(forSaleService.findByUserId(shoppingSaveDto.getForSaleUserId()))
+                .user(loginService.findById(shoppingSaveDto.getUserId()))
                 .build();
 
         shoppingRepository.save(shopping);

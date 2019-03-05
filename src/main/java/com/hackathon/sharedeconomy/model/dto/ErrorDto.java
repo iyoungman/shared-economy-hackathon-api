@@ -1,14 +1,19 @@
 package com.hackathon.sharedeconomy.model.dto;
 
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Setter
 public class ErrorDto {
 
     private String originalErrorMessage;
     private String errorMessage;
     private String requestURL;
+
+    public ErrorDto() {
+    }
 
     @Builder
     public ErrorDto(String originalErrorMessage, String errorMessage, String requestURL) {

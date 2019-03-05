@@ -1,9 +1,10 @@
 package com.hackathon.sharedeconomy.controller;
 
-import com.hackathon.sharedeconomy.model.dto.ShoppingDto;
+import com.hackathon.sharedeconomy.model.dto.ShoppingSaveDto;
 import com.hackathon.sharedeconomy.service.ShoppingService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,7 +29,7 @@ public class ShoppingController {
     @ApiOperation(value = "찜한 매물 등록")
     @ApiImplicitParam(name = "shoppingSaveDto", dataType = "ShoppingSaveDto")
     @PostMapping
-    public void saveShopping(@RequestBody ShoppingDto.Save saveDto) {
-        shoppingService.saveShopping(saveDto);
+    public void saveShopping(@RequestBody ShoppingSaveDto shoppingSaveDto) {
+        shoppingService.saveShopping(shoppingSaveDto);
     }
 }

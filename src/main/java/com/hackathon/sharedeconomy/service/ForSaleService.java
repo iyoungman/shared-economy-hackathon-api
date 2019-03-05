@@ -1,9 +1,12 @@
 package com.hackathon.sharedeconomy.service;
 
 import com.hackathon.sharedeconomy.exception.UserDefineException;
-import com.hackathon.sharedeconomy.model.dto.ForSaleDto;
+import com.hackathon.sharedeconomy.model.dto.ForSaleRequestDto;
+import com.hackathon.sharedeconomy.model.dto.ForSaleResponseDto;
+import com.hackathon.sharedeconomy.model.dto.ForSaleSaveDto;
 import com.hackathon.sharedeconomy.model.entity.ForSale;
 import com.hackathon.sharedeconomy.model.entity.Image;
+import com.hackathon.sharedeconomy.model.entity.Shopping;
 import com.hackathon.sharedeconomy.model.entity.User;
 import com.hackathon.sharedeconomy.model.enums.SaleType;
 import com.hackathon.sharedeconomy.repository.ForSaleRepository;
@@ -48,18 +51,18 @@ public class ForSaleService {
     /*
      * 연관 관계에 의해 imageService의 사진이 저장되면서 forSale정보가 등록된다.
      */
-    public void saveForSale(ForSaleDto.Save saveDto) {
-        if (!isEmptyForSaleByUserId(saveDto.getUserId())) {
+    public void saveForSale(ForSaleSaveDto forSaleSaveDto) {
+        if (!isEmptyForSaleByUserId(forSaleSaveDto.getUserId())) {
             throw new UserDefineException("해당 유저의 매물이 등록되어 있습니다.");
         }
 
-        User user = loginService.findById(saveDto.getUserId());
-        List<String> imageList = saveDto.getImagePath();
+        User user = loginService.findById(forSaleSaveDto.getUserId());
+        List<String> imageList = forSaleSaveDto.getImagePath();
         List<Image> images = new ArrayList<>();
 
         ForSale forSale = ForSale.builder()
-                .name(saveDto.getName())
-                .price(saveDto.getPrice())
+                .name(forSaleSaveDto.getName())
+                .price(forSaleSaveDto.getPrice())
                 .user(user)
                 .build();
 
@@ -83,20 +86,20 @@ public class ForSaleService {
     /*
      * 이미지 수정 보류
      */
-    public void updateForSale(ForSaleDto.Save saveDto) {
-        ForSale forSale = findByUserId(saveDto.getUserId());
-        forSale.updateForSale(saveDto);
+    public void updateForSale(ForSaleSaveDto forSaleSaveDto) {
+        ForSale forSale = findByUserId(forSaleSaveDto.getUserId());
+        forSale.updateForSale(forSaleSaveDto);
         forSaleRepository.save(forSale);
     }
 
-    public List<ForSaleDto.Response> getForSaleResponseDtos(ForSaleDto.Request requestDto) {
-        List<ForSaleDto.Response> forSaleResponseDtos = forSaleRepository.getForSaleResponseDtos(requestDto);
+    public List<ForSaleResponseDto> getForSaleResponseDtos(ForSaleRequestDto forSaleRequestDto) {
+        List<ForSaleResponseDto> forSaleResponseDtos = forSaleRepository.getForSaleResponseDtos(forSaleRequestDto);
         return convertImgToBase64(forSaleResponseDtos);
     }
 
-    private List<ForSaleDto.Response> convertImgToBase64(List<ForSaleDto.Response> forSaleResponseDtos) {
+    private List<ForSaleResponseDto> convertImgToBase64(List<ForSaleResponseDto> forSaleResponseDtos) {
 
-        for (ForSaleDto.Response forSaleResponseDto : forSaleResponseDtos) {
+        for (ForSaleResponseDto forSaleResponseDto : forSaleResponseDtos) {
             ForSale forSale = forSaleResponseDto.getForSale();
             List<Image> images = forSale.getImages();
 
