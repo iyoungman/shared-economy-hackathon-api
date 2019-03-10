@@ -57,9 +57,9 @@ public class ForSale {
         this.shoppings = shoppings;
     }
 
-    public void updateForSale(ForSaleDto.Save saveDto) {
-        this.price = saveDto.getPrice();
-        this.name = saveDto.getName();
+    public void updateForSale(ForSaleDto.Register registerDto) {
+        this.price = registerDto.getPrice();
+        this.name = registerDto.getName();
     }
 
     public void updateSaleType() {

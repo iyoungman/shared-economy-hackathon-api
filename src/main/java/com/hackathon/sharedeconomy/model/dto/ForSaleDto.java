@@ -47,14 +47,14 @@ public class ForSaleDto {
 
     @Getter
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
-    public static class Save {
+    public static class Register {
         private Long price;
         private String name;
         private String userId;
         private List<String> imagePath = new ArrayList<>();
 
         @Builder
-        public Save(Long price, String name, String userId, List<String> imagePath) {
+        public Register(Long price, String name, String userId, List<String> imagePath) {
             this.price = price;
             this.name = name;
             this.userId = userId;

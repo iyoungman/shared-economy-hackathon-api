@@ -21,13 +21,16 @@ public class Image {
 
     private String path;
 
+    private String url;
+
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonBackReference
     private ForSale forSale;
 
     @Builder
-    public Image(String path, ForSale forSale) {
+    public Image(String path, String url, ForSale forSale) {
         this.path = path;
+        this.url = url;
         this.forSale = forSale;
     }
 

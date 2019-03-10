@@ -12,6 +12,7 @@ import java.util.List;
 @Table(name = "user_tbl")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Setter
 public class User {
 
     @Id

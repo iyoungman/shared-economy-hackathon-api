@@ -6,7 +6,7 @@ import com.hackathon.sharedeconomy.model.entity.QUser;
 import com.hackathon.sharedeconomy.model.entity.User;
 import com.hackathon.sharedeconomy.model.enums.SaleType;
 import com.hackathon.sharedeconomy.repository.custom.ForSaleRepositoryCustom;
-import com.hackathon.sharedeconomy.service.LoginService;
+import com.hackathon.sharedeconomy.service.UserService;
 import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -27,12 +27,12 @@ public class ForSaleRepositoryImpl extends QuerydslRepositorySupport implements 
 
     private final JPAQueryFactory queryFactory;
     private QUser user = QUser.user;
-    private LoginService loginService;
+    private UserService userService;
 
-    public ForSaleRepositoryImpl(JPAQueryFactory queryFactory, LoginService loginService) {
+    public ForSaleRepositoryImpl(JPAQueryFactory queryFactory, UserService userService) {
         super(ForSale.class);
         this.queryFactory = queryFactory;
-        this.loginService = loginService;
+        this.userService = userService;
     }
 
     @Override
@@ -49,7 +49,7 @@ public class ForSaleRepositoryImpl extends QuerydslRepositorySupport implements 
             return null;
         }
 
-        User loginUser = loginService.findById(userId);
+        User loginUser = userService.findById(userId);
         return user.address.eq(loginUser.getAddress());
     }
 

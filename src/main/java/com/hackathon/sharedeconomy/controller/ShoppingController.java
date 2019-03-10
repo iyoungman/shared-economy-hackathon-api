@@ -26,7 +26,6 @@ public class ShoppingController {
     }
 
     @ApiOperation(value = "찜한 매물 등록")
-    @ApiImplicitParam(name = "shoppingSaveDto", dataType = "ShoppingSaveDto")
     @PostMapping
     public void saveShopping(@RequestBody ShoppingDto.Save saveDto) {
         shoppingService.saveShopping(saveDto);
