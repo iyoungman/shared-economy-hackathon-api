@@ -1,5 +1,6 @@
 package com.hackathon.sharedeconomy.service;
 
+import com.hackathon.sharedeconomy.model.dto.ForSaleDto;
 import com.hackathon.sharedeconomy.model.dto.ShoppingDto;
 import com.hackathon.sharedeconomy.model.entity.Shopping;
 import com.hackathon.sharedeconomy.model.entity.User;
@@ -33,11 +34,4 @@ public class ShoppingService {
 
         shoppingRepository.save(shopping);
     }
-
-    public ds get(String userId) {
-        User user = userService.findById(userId);
-        List<Shopping> shoppings = shoppingRepository.findAllByUser();
-        shoppings.getForSale() -> forsale() 의 Id만 구한다.
-    }
-
 }

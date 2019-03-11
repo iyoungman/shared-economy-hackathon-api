@@ -20,7 +20,7 @@ import java.util.List;
 @Service
 public class ForSaleService {
 
-    private final String URLPATH = "http://54.180.67.243:8090/imgfile/";
+    private final String URLPATH = "http://54.180.67.243:8094/imgfile/";
     private ForSaleRepository forSaleRepository;
     private UserService userService;
     private ImageService imageService;
@@ -55,7 +55,9 @@ public class ForSaleService {
         }
 
         User user = userService.findById(registerDto.getUserId());
-        List<String> imageList = registerDto.getImagePath();
+//        List<String> imageList = registerDto.getImagePath();
+        List<String> imageList = new ArrayList<>();
+        imageList.add(registerDto.getImagePath());
         List<Image> images = new ArrayList<>();
 
         ForSale forSale = ForSale.builder()
@@ -91,8 +93,14 @@ public class ForSaleService {
         forSaleRepository.save(forSale);
     }
 
-    public List<ForSaleDto.Response> getForSaleResponseDtos(ForSaleDto.Request requestDto) {
+    /*public List<ForSaleDto.Response> getForSaleResponseDtos(ForSaleDto.Request requestDto) {
         List<ForSaleDto.Response> responseDtos = forSaleRepository.getForSaleResponseDtos(requestDto);
+        return responseDtos;
+        //        return convertImgToBase64(responseDtos);
+    }*/
+
+    public List<ForSaleDto.ResponseDto> getForSaleResponseDtos(ForSaleDto.Request requestDto) {
+        List<ForSaleDto.ResponseDto> responseDtos = forSaleRepository.getForSaleResponseDtos(requestDto);
         return responseDtos;
         //        return convertImgToBase64(responseDtos);
     }
@@ -118,6 +126,10 @@ public class ForSaleService {
             forSale.updateSaleType();
             forSaleRepository.save(forSale);
         }
+    }
+
+    public List<ForSaleDto.ResponseDto> getForSaleResponseDtosByShopping(String userId) {
+        return forSaleRepository.getForSaleResponseDtosByShopping(userId);
     }
 
 

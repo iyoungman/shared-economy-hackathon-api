@@ -10,5 +10,9 @@ import java.util.List;
 
 public interface ForSaleRepositoryCustom {
 
-    List<ForSaleDto.Response> getForSaleResponseDtos(ForSaleDto.Request requestDto);
+//    List<ForSaleDto.Response> getForSaleResponseDtos(ForSaleDto.Request requestDto);
+
+    List<ForSaleDto.ResponseDto> getForSaleResponseDtos(ForSaleDto.Request requestDto);
+
+    List<ForSaleDto.ResponseDto> getForSaleResponseDtosByShopping(String userId);
 }

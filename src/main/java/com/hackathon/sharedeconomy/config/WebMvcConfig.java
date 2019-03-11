@@ -12,13 +12,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
     /*
-     * /C:/testimg/
-     * /usr/local/tomcat-8.0.53/webapps/imgfile/
+     * file:///C:/testimg/
+     * file:///usr/local/tomcat-8.0.53/webapps/imgfile/
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/imgfile/**")
-                .addResourceLocations("C:/testimg/")
-                .addResourceLocations("/usr/local/tomcat-8.0.53/webapps/imgfile/");
+//                .addResourceLocations("file:///C:/testimg/");
+                .addResourceLocations("file:///usr/local/tomcat-8.0.53/webapps/imgfile/");
     }
 }

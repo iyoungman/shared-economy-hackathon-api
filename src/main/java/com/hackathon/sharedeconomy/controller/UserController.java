@@ -4,6 +4,8 @@ import com.hackathon.sharedeconomy.model.dto.UserDto;
 import com.hackathon.sharedeconomy.model.entity.User;
 import com.hackathon.sharedeconomy.service.UserService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,13 +21,21 @@ public class UserController {
     }
 
     @ApiOperation(value = "로그인")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "아이디(중복된 아이디 있으면 중복 메세지)"),
+            @ApiImplicitParam(name = "pw", value = "비밀번호")
+    })
     @PostMapping("/signin")
     public UserDto.UserResponse signIn(@RequestBody UserDto.SignInRequest signInRequestDto){
         return userService.signIn(signInRequestDto.toEntity());
     }
 
 
-    @ApiOperation(value = "회원가입(role 타입은 '노인'or'청년'으로 기입)")
+    @ApiOperation(value = "회원가입")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "아이디(중복된 아이디 있으면 중복 메세지)"),
+            @ApiImplicitParam(name = "role", value = "역할은 '노인' or '청년' 둘중 하나의 형태로 기입")
+    })
     @PostMapping("/signup")
     public UserDto.UserResponse signUp(@RequestBody UserDto.SingUpRequest signupDto){
         return userService.signUp(signupDto.toEntity());
