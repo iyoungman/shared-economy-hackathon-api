@@ -18,7 +18,7 @@ import java.util.List;
 @Service
 public class ImageService {
 
-    private final String WINDOW_PATH = "C:\\testimg\\";
+//    private final String WINDOW_PATH = "C:\\testimg\\testid0.png";
     private final String LINUX_PATH = "/usr/local/tomcat-8.0.53/webapps/imgfile/";
     private ImageRepository imageRepository;
 

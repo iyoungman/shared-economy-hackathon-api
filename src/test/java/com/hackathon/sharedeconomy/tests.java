@@ -1,7 +1,7 @@
 package com.hackathon.sharedeconomy;
 
 import com.hackathon.sharedeconomy.service.ForSaleService;
-import com.hackathon.sharedeconomy.service.LoginService;
+import com.hackathon.sharedeconomy.service.UserService;
 import com.hackathon.sharedeconomy.service.ShoppingService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,10 +17,15 @@ public class tests {
     private ForSaleService forSaleService;
 
     @Autowired
-    private LoginService loginService;
+    private UserService userService;
 
     @Autowired
     private ShoppingService shoppingService;
+
+    @Test
+    public void deleteUser() {
+        userService.deleteUser("testid2");
+    }
 
    /* @Test
     public void saveForSale() {

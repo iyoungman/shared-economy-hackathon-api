@@ -20,13 +20,14 @@ import java.util.List;
 @Service
 public class ForSaleService {
 
+    private final String URLPATH = "http://54.180.67.243:8094/imgfile/";
     private ForSaleRepository forSaleRepository;
-    private LoginService loginService;
+    private UserService userService;
     private ImageService imageService;
 
-    public ForSaleService(ForSaleRepository forSaleRepository, LoginService loginService, ImageService imageService) {
+    public ForSaleService(ForSaleRepository forSaleRepository, UserService userService, ImageService imageService) {
         this.forSaleRepository = forSaleRepository;
-        this.loginService = loginService;
+        this.userService = userService;
         this.imageService = imageService;
     }
 
@@ -48,18 +49,20 @@ public class ForSaleService {
     /*
      * 연관 관계에 의해 imageService의 사진이 저장되면서 forSale정보가 등록된다.
      */
-    public void saveForSale(ForSaleDto.Save saveDto) {
-        if (!isEmptyForSaleByUserId(saveDto.getUserId())) {
+    public void saveForSale(ForSaleDto.Register registerDto) {
+        if (!isEmptyForSaleByUserId(registerDto.getUserId())) {
             throw new UserDefineException("해당 유저의 매물이 등록되어 있습니다.");
         }
 
-        User user = loginService.findById(saveDto.getUserId());
-        List<String> imageList = saveDto.getImagePath();
+        User user = userService.findById(registerDto.getUserId());
+//        List<String> imageList = registerDto.getImagePath();
+        List<String> imageList = new ArrayList<>();
+        imageList.add(registerDto.getImagePath());
         List<Image> images = new ArrayList<>();
 
         ForSale forSale = ForSale.builder()
-                .name(saveDto.getName())
-                .price(saveDto.getPrice())
+                .name(registerDto.getName())
+                .price(registerDto.getPrice())
                 .user(user)
                 .build();
 
@@ -69,6 +72,7 @@ public class ForSaleService {
 
             images.add(Image.builder()
                     .path(writeFilePath)
+                    .url(URLPATH + writeFileName + ".png")
                     .forSale(forSale)
                     .build());
         }
@@ -83,15 +87,22 @@ public class ForSaleService {
     /*
      * 이미지 수정 보류
      */
-    public void updateForSale(ForSaleDto.Save saveDto) {
-        ForSale forSale = findByUserId(saveDto.getUserId());
-        forSale.updateForSale(saveDto);
+    public void updateForSale(ForSaleDto.Register registerDto) {
+        ForSale forSale = findByUserId(registerDto.getUserId());
+        forSale.updateForSale(registerDto);
         forSaleRepository.save(forSale);
     }
 
-    public List<ForSaleDto.Response> getForSaleResponseDtos(ForSaleDto.Request requestDto) {
+    /*public List<ForSaleDto.Response> getForSaleResponseDtos(ForSaleDto.Request requestDto) {
         List<ForSaleDto.Response> responseDtos = forSaleRepository.getForSaleResponseDtos(requestDto);
-        return convertImgToBase64(responseDtos);
+        return responseDtos;
+        //        return convertImgToBase64(responseDtos);
+    }*/
+
+    public List<ForSaleDto.ResponseDto> getForSaleResponseDtos(ForSaleDto.Request requestDto) {
+        List<ForSaleDto.ResponseDto> responseDtos = forSaleRepository.getForSaleResponseDtos(requestDto);
+        return responseDtos;
+        //        return convertImgToBase64(responseDtos);
     }
 
     private List<ForSaleDto.Response> convertImgToBase64(List<ForSaleDto.Response> responseDtos) {
@@ -115,6 +126,10 @@ public class ForSaleService {
             forSale.updateSaleType();
             forSaleRepository.save(forSale);
         }
+    }
+
+    public List<ForSaleDto.ResponseDto> getForSaleResponseDtosByShopping(String userId) {
+        return forSaleRepository.getForSaleResponseDtosByShopping(userId);
     }
 
 

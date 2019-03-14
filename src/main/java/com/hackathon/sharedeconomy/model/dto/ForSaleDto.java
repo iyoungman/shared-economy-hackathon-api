@@ -47,18 +47,50 @@ public class ForSaleDto {
 
     @Getter
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
-    public static class Save {
+    public static class Register {
         private Long price;
         private String name;
         private String userId;
-        private List<String> imagePath = new ArrayList<>();
+//        private List<String> imagePath = new ArrayList<>();
+        private String imagePath;
 
         @Builder
-        public Save(Long price, String name, String userId, List<String> imagePath) {
+        public Register(Long price, String name, String userId, String imagePath) {
             this.price = price;
             this.name = name;
             this.userId = userId;
             this.imagePath = imagePath;
+        }
+    }
+
+    /*
+     * 매물정보
+     * 해당 매물의 사용자 정보
+     */
+    @Getter
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    public static class ResponseDto {
+        private Long id;
+        private Long price;
+        private String name;
+        private String imagePath;
+        private String userId;
+        private String phoneNumber;
+        private String address;
+        private String userName;
+        private Integer age;
+
+        @Builder
+        public ResponseDto(Long id, Long price, String name, String imagePath, String userId, String phoneNumber, String address, String userName, Integer age) {
+            this.id = id;
+            this.price = price;
+            this.name = name;
+            this.imagePath = imagePath;
+            this.userId = userId;
+            this.phoneNumber = phoneNumber;
+            this.address = address;
+            this.userName = userName;
+            this.age = age;
         }
     }
 

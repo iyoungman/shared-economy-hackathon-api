@@ -1,9 +1,12 @@
 package com.hackathon.sharedeconomy.model.enums;
 
+import lombok.Getter;
+
 /**
  * Created by YoungMan on 2019-02-14.
  */
 
+@Getter
 public enum RoleType {
     OLD("노인"), YOUNG("청년");
 
