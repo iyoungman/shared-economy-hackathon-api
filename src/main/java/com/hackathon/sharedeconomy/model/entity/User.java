@@ -28,6 +28,8 @@ public class User {
 
     private Integer age;
 
+    private String sex;
+
     @OneToMany(mappedBy = "user")
     @JsonManagedReference
     private List<ForSale> forSales = new ArrayList<>();
@@ -40,13 +42,14 @@ public class User {
     private RoleType role;
 
     @Builder
-    public User(String id, String pw, String name, String phoneNumber, String address, Integer age, List<ForSale> forSales, List<Shopping> shoppings, RoleType role) {
+    public User(String id, String pw, String name, String phoneNumber, String address, Integer age, String sex, List<ForSale> forSales, List<Shopping> shoppings, RoleType role) {
         this.id = id;
         this.pw = pw;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.age = age;
+        this.sex = sex;
         this.forSales = forSales;
         this.shoppings = shoppings;
         this.role = role;

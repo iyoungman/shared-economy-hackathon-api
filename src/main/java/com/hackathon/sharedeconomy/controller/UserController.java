@@ -34,6 +34,7 @@ public class UserController {
     @ApiOperation(value = "회원가입")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "아이디(중복된 아이디 있으면 중복 메세지)"),
+            @ApiImplicitParam(name = "sex", value = "성별은 '남' or '여' 둘중 하나의 형태로 기입"),
             @ApiImplicitParam(name = "role", value = "역할은 '노인' or '청년' 둘중 하나의 형태로 기입")
     })
     @PostMapping("/signup")
@@ -49,5 +50,6 @@ public class UserController {
     @PostMapping("/update")
     public SignupDto update(@RequestBody SignupDto signupDto){
         return loginService.update(signupDto);
-    }*/
+    }
+    */
 }

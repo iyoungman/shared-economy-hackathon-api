@@ -25,7 +25,7 @@ public class AspectException {
             result = proceedingJoinPoint.proceed();
         } catch (Exception e) {
             String exceptionMethod = e.getStackTrace()[0].getMethodName();
-            throw new UserDefineException("로그인 과정에서 오류", e.toString(), exceptionMethod);
+            throw new UserDefineException("로그인 과정에서 오류", false);
         }
 
         return result;

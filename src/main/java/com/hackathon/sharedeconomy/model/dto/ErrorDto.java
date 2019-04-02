@@ -7,13 +7,13 @@ import lombok.*;
 public class ErrorDto {
 
     private String originalErrorMessage;
-    private String errorMessage;
     private String requestURL;
+    private boolean success;
 
     @Builder
-    public ErrorDto(String originalErrorMessage, String errorMessage, String requestURL) {
+    public ErrorDto(String originalErrorMessage, String requestURL, boolean success) {
         this.originalErrorMessage = originalErrorMessage;
-        this.errorMessage = errorMessage;
         this.requestURL = requestURL;
+        this.success = success;
     }
 }

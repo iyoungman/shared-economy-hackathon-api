@@ -6,19 +6,16 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 /**
  * Created by YoungMan on 2019-03-11.
+ * file:///C:/testimg/
+ * file:///usr/local/tomcat-8.0.53/webapps/imgfile/
  */
 
 @Configuration
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
-    /*
-     * file:///C:/testimg/
-     * file:///usr/local/tomcat-8.0.53/webapps/imgfile/
-     */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/imgfile/**")
-//                .addResourceLocations("file:///C:/testimg/");
-                .addResourceLocations("file:///usr/local/tomcat-8.0.53/webapps/imgfile/");
+                .addResourceLocations("file:///home/ec2-user/project/shared-img-file/");
     }
 }
