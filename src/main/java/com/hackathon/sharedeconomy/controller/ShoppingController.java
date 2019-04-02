@@ -1,5 +1,6 @@
 package com.hackathon.sharedeconomy.controller;
 
+import com.hackathon.sharedeconomy.model.dto.CommonDto;
 import com.hackathon.sharedeconomy.model.dto.ShoppingDto;
 import com.hackathon.sharedeconomy.model.entity.Shopping;
 import com.hackathon.sharedeconomy.service.ShoppingService;
@@ -32,8 +33,8 @@ public class ShoppingController {
             @ApiImplicitParam(name = "forSaleUserId", value = "등록할 매물 유저의 ID")
     })
     @PostMapping
-    public void saveShopping(@RequestBody ShoppingDto.Save saveDto) {
-        shoppingService.saveShopping(saveDto);
+    public CommonDto saveShopping(@RequestBody ShoppingDto.Save saveDto) {
+        return shoppingService.saveShopping(saveDto);
     }
 
 }

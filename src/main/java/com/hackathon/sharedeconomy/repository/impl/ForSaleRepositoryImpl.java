@@ -20,6 +20,7 @@ import static com.hackathon.sharedeconomy.model.entity.QForSale.forSale;
  * Created by YoungMan on 2019-02-23.
  */
 
+@SuppressWarnings("Duplicates")
 @Component
 public class ForSaleRepositoryImpl extends QuerydslRepositorySupport implements ForSaleRepositoryCustom {
 
@@ -35,22 +36,13 @@ public class ForSaleRepositoryImpl extends QuerydslRepositorySupport implements 
         this.userService = userService;
     }
 
-    /*@Override
-    public List<ForSaleDto.Response> getForSaleResponseDtos(ForSaleDto.Request requestDto) {
-        return queryFactory.select(Projections.constructor(ForSaleDto.Response.class, forSale, user.id, user.phoneNumber, user.address))
-                .from(forSale)
-                .join(forSale.user, user)
-                .where(eqUserAddress(requestDto.getUserId()), likeSearchAddress(requestDto.getAddress()), eqSale())
-                .fetch();
-    }*/
-
     @Override
-    public List<ForSaleDto.ResponseDto> getForSaleResponseDtos(ForSaleDto.Request requestDto) {
-        return queryFactory.select(Projections.constructor(ForSaleDto.ResponseDto.class, forSale.id, forSale.price, forSale.name, image.url, user.id, user.phoneNumber, user.address, user.name, user.age))
+    public List<ForSaleDto.ForSaleInfo> getForSaleResponseDtos(ForSaleDto.SearchRequest searchRequestDto) {
+        return queryFactory.select(Projections.constructor(ForSaleDto.ForSaleInfo.class, forSale.id, forSale.price, forSale.name, image.url, user.id, user.phoneNumber, user.address, user.name, user.age, forSale.additionalInfo))
                 .from(forSale)
                 .join(forSale.user, user)
                 .join(forSale.images, image)
-                .where(eqUserAddress(requestDto.getUserId()), likeSearchAddress(requestDto.getAddress()), eqSale())
+                .where(eqUserAddress(searchRequestDto.getUserId()), likeSearchAddress(searchRequestDto.getAddress()), eqSale())
                 .fetch();
     }
 
@@ -58,7 +50,6 @@ public class ForSaleRepositoryImpl extends QuerydslRepositorySupport implements 
         if (StringUtils.isEmpty(userId)) {
             return null;
         }
-
         User loginUser = userService.findById(userId);
         return user.address.eq(loginUser.getAddress());
     }
@@ -76,8 +67,8 @@ public class ForSaleRepositoryImpl extends QuerydslRepositorySupport implements 
 
 
     @Override
-    public List<ForSaleDto.ResponseDto> getForSaleResponseDtosByShopping(String userId) {
-        return queryFactory.select(Projections.constructor(ForSaleDto.ResponseDto.class, forSale.id, forSale.price, forSale.name, image.url, user.id, user.phoneNumber, user.address, user.name, user.age))
+    public List<ForSaleDto.ForSaleInfo> getForSaleResponseDtosByShopping(String userId) {
+        return queryFactory.select(Projections.constructor(ForSaleDto.ForSaleInfo.class, forSale.id, forSale.price, forSale.name, image.url, user.id, user.phoneNumber, user.address, user.name, user.age, forSale.additionalInfo))
                 .from(forSale)
                 .join(forSale.user, user)
                 .join(forSale.images, image)

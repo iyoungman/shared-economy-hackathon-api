@@ -13,20 +13,20 @@ import java.util.List;
 
 /**
  * Created by YoungMan on 2019-02-14.
+ * WINDOW_PATH = "C:\\testimg\\testid0.png";
  */
 
 @Service
 public class ImageService {
 
-//    private final String WINDOW_PATH = "C:\\testimg\\testid0.png";
-    private final String LINUX_PATH = "/usr/local/tomcat-8.0.53/webapps/imgfile/";
+    private final String LINUX_PATH = "/home/ec2-user/project/shared-img-file/";
     private ImageRepository imageRepository;
 
     public ImageService(ImageRepository imageRepository) {
         this.imageRepository = imageRepository;
     }
 
-    /*
+    /**
      * 안드로이드 -> 서버
      * return : 저장 경로
      */
@@ -37,13 +37,13 @@ public class ImageService {
         try {
             FileUtils.writeByteArrayToFile(new File(writeFilePath), decodedBytes);
         } catch (IOException e) {
-            throw new UserDefineException("Base64에서 이미지 파일로 변환하는 과정에서 오류", e.toString());
+            throw new UserDefineException("Base64에서 이미지 파일로 변환하는 과정에서 오류", false);
         }
 
         return writeFilePath;
     }
 
-    /*
+    /**
      * 서버 -> 안드로이드
      * return : base64
      */
@@ -54,7 +54,7 @@ public class ImageService {
         try {
             fileContent = FileUtils.readFileToByteArray(new File(readFilePath));
         } catch (IOException e) {
-            throw new UserDefineException("이미지 파일에서 Base64로 변환하는 과정에서 오류", e.toString());
+            throw new UserDefineException("이미지 파일에서 Base64로 변환하는 과정에서 오류", false);
         }
         return Base64.getEncoder().encodeToString(fileContent);
     }
@@ -62,6 +62,5 @@ public class ImageService {
     public void saveAll(List<Image> images) {
         imageRepository.saveAll(images);
     }
-
 
 }
