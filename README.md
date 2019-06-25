@@ -1,8 +1,9 @@
 # Product Name
 > 한집가치 어플리케이션 API서버
+> 2019 공유경제 해커톤 우수상 수상
 
-## Introduce
-* 2019 공유경제 해커톤 우수상 수상
+## Motivation
+* 2019 공유경제 해커톤
 
 ## Fuction
 *
