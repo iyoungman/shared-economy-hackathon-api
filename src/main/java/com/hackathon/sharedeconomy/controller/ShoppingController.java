@@ -21,20 +21,20 @@ import java.util.List;
 @RequestMapping(value = "/shared/shopping")
 public class ShoppingController {
 
-    private ShoppingService shoppingService;
+	private ShoppingService shoppingService;
 
-    public ShoppingController(ShoppingService shoppingService) {
-        this.shoppingService = shoppingService;
-    }
+	public ShoppingController(ShoppingService shoppingService) {
+		this.shoppingService = shoppingService;
+	}
 
-    @ApiOperation(value = "찜할 매물 등록")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "userId", value = "찜하는 유저의 ID"),
-            @ApiImplicitParam(name = "forSaleUserId", value = "등록할 매물 유저의 ID")
-    })
-    @PostMapping
-    public CommonDto saveShopping(@RequestBody ShoppingDto.Save saveDto) {
-        return shoppingService.saveShopping(saveDto);
-    }
+	@ApiOperation(value = "찜할 매물 등록")
+	@ApiImplicitParams({
+			@ApiImplicitParam(name = "userId", value = "찜하는 유저의 ID"),
+			@ApiImplicitParam(name = "forSaleUserId", value = "등록할 매물 유저의 ID")
+	})
+	@PostMapping
+	public CommonDto saveShopping(@RequestBody ShoppingDto.Save saveDto) {
+		return shoppingService.saveShopping(saveDto);
+	}
 
 }

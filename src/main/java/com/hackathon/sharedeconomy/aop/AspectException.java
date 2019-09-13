@@ -12,23 +12,23 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class AspectException {
-    private Logger logger = LoggerFactory.getLogger(AspectException.class);
+	private Logger logger = LoggerFactory.getLogger(AspectException.class);
 
-    @Pointcut("execution(* com.hackathon.sharedeconomy.service.UserService.signIn(..))")
-    public void login() {
-    }
+	@Pointcut("execution(* com.hackathon.sharedeconomy.service.UserService.signIn(..))")
+	public void login() {
+	}
 
-    @Around("login()")
-    private Object aroundLoginException(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
-        Object result = new Object();
-        try {
-            result = proceedingJoinPoint.proceed();
-        } catch (Exception e) {
-            String exceptionMethod = e.getStackTrace()[0].getMethodName();
-            throw new UserDefineException("로그인 과정에서 오류", false);
-        }
+	@Around("login()")
+	private Object aroundLoginException(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+		Object result = new Object();
+		try {
+			result = proceedingJoinPoint.proceed();
+		} catch (Exception e) {
+			String exceptionMethod = e.getStackTrace()[0].getMethodName();
+			throw new UserDefineException("로그인 과정에서 오류", false);
+		}
 
-        return result;
-    }
+		return result;
+	}
 
 }

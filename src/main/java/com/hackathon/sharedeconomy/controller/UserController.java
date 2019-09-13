@@ -14,33 +14,33 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "/shared")
 public class UserController {
 
-    private UserService userService;
+	private UserService userService;
 
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
+	public UserController(UserService userService) {
+		this.userService = userService;
+	}
 
-    @ApiOperation(value = "로그인")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "아이디(중복된 아이디 있으면 중복 메세지)"),
-            @ApiImplicitParam(name = "pw", value = "비밀번호")
-    })
-    @PostMapping("/signin")
-    public UserDto.UserResponse signIn(@RequestBody UserDto.SignInRequest signInRequestDto){
-        return userService.signIn(signInRequestDto.toEntity());
-    }
+	@ApiOperation(value = "로그인")
+	@ApiImplicitParams({
+			@ApiImplicitParam(name = "id", value = "아이디(중복된 아이디 있으면 중복 메세지)"),
+			@ApiImplicitParam(name = "pw", value = "비밀번호")
+	})
+	@PostMapping("/signin")
+	public UserDto.UserResponse signIn(@RequestBody UserDto.SignInRequest signInRequestDto) {
+		return userService.signIn(signInRequestDto.toEntity());
+	}
 
 
-    @ApiOperation(value = "회원가입")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "아이디(중복된 아이디 있으면 중복 메세지)"),
-            @ApiImplicitParam(name = "sex", value = "성별은 '남' or '여' 둘중 하나의 형태로 기입"),
-            @ApiImplicitParam(name = "role", value = "역할은 '노인' or '청년' 둘중 하나의 형태로 기입")
-    })
-    @PostMapping("/signup")
-    public UserDto.UserResponse signUp(@RequestBody UserDto.SingUpRequest signupDto){
-        return userService.signUp(signupDto.toEntity());
-    }
+	@ApiOperation(value = "회원가입")
+	@ApiImplicitParams({
+			@ApiImplicitParam(name = "id", value = "아이디(중복된 아이디 있으면 중복 메세지)"),
+			@ApiImplicitParam(name = "sex", value = "성별은 '남' or '여' 둘중 하나의 형태로 기입"),
+			@ApiImplicitParam(name = "role", value = "역할은 '노인' or '청년' 둘중 하나의 형태로 기입")
+	})
+	@PostMapping("/signup")
+	public UserDto.UserResponse signUp(@RequestBody UserDto.SingUpRequest signupDto) {
+		return userService.signUp(signupDto.toEntity());
+	}
 
 
     /*@ApiOperation(value = "회원정보 수정")

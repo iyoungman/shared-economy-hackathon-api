@@ -13,12 +13,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class CommonDto {
 
-    private boolean success;
-    private String message;
+	private boolean success;
+	private String message;
 
-    @Builder
-    public CommonDto(boolean success, String message) {
-        this.success = success;
-        this.message = message;
-    }
+	@Builder
+	public CommonDto(boolean success, String message) {
+		this.success = success;
+		this.message = message;
+	}
 }

@@ -15,26 +15,26 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Image {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    private String path;
+	private String path;
 
-    private String url;
+	private String url;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonBackReference
-    private ForSale forSale;
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JsonBackReference
+	private ForSale forSale;
 
-    @Builder
-    public Image(String path, String url, ForSale forSale) {
-        this.path = path;
-        this.url = url;
-        this.forSale = forSale;
-    }
+	@Builder
+	public Image(String path, String url, ForSale forSale) {
+		this.path = path;
+		this.url = url;
+		this.forSale = forSale;
+	}
 
-    public void updatePath(String path) {
-        this.path = path;
-    }
+	public void updatePath(String path) {
+		this.path = path;
+	}
 }

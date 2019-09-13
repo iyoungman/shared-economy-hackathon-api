@@ -15,21 +15,21 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Shopping {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonBackReference
-    private User user;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonBackReference
+	private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonBackReference
-    private ForSale forSale;
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JsonBackReference
+	private ForSale forSale;
 
-    @Builder
-    public Shopping(User user, ForSale forSale) {
-        this.user = user;
-        this.forSale = forSale;
-    }
+	@Builder
+	public Shopping(User user, ForSale forSale) {
+		this.user = user;
+		this.forSale = forSale;
+	}
 }

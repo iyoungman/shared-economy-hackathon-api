@@ -11,16 +11,16 @@ import lombok.NoArgsConstructor;
 
 public class ShoppingDto {
 
-    @Getter
-    @NoArgsConstructor(access = AccessLevel.PROTECTED)
-    public static class Save {
-        private String userId;
-        private String forSaleUserId;
+	@Getter
+	@NoArgsConstructor(access = AccessLevel.PROTECTED)
+	public static class Save {
+		private String userId;
+		private String forSaleUserId;
 
-        @Builder
-        public Save(String userId, String forSaleUserId) {
-            this.userId = userId;
-            this.forSaleUserId = forSaleUserId;
-        }
-    }
+		@Builder
+		public Save(String userId, String forSaleUserId) {
+			this.userId = userId;
+			this.forSaleUserId = forSaleUserId;
+		}
+	}
 }

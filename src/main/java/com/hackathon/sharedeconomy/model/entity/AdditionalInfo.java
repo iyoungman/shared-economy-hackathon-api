@@ -17,23 +17,23 @@ import javax.persistence.Embeddable;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class AdditionalInfo {
 
-    private String precautionFirst;
-    private String precautionSecond;
-    private String offerFirst;
-    private String offerSecond;
+	private String precautionFirst;
+	private String precautionSecond;
+	private String offerFirst;
+	private String offerSecond;
 
-    @Builder
-    public AdditionalInfo(String precautionFirst, String precautionSecond, String offerFirst, String offerSecond) {
-        this.precautionFirst = precautionFirst;
-        this.precautionSecond = precautionSecond;
-        this.offerFirst = offerFirst;
-        this.offerSecond = offerSecond;
-    }
+	@Builder
+	public AdditionalInfo(String precautionFirst, String precautionSecond, String offerFirst, String offerSecond) {
+		this.precautionFirst = precautionFirst;
+		this.precautionSecond = precautionSecond;
+		this.offerFirst = offerFirst;
+		this.offerSecond = offerSecond;
+	}
 
-    public void updateAdditionalInfo(String precautionFirst, String precautionSecond, String offerFirst, String offerSecond) {
-        this.precautionFirst = precautionFirst;
-        this.precautionSecond = precautionSecond;
-        this.offerFirst = offerFirst;
-        this.offerSecond = offerSecond;
-    }
+	public void updateAdditionalInfo(String precautionFirst, String precautionSecond, String offerFirst, String offerSecond) {
+		this.precautionFirst = precautionFirst;
+		this.precautionSecond = precautionSecond;
+		this.offerFirst = offerFirst;
+		this.offerSecond = offerSecond;
+	}
 }

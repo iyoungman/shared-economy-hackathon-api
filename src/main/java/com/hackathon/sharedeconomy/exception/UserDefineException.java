@@ -9,17 +9,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class UserDefineException extends RuntimeException {
 
-    private String originalErrorMessage;
-    private String errorMethod;
-    private boolean success;
+	private String originalErrorMessage;
+	private String errorMethod;
+	private boolean success;
 
-    public UserDefineException(String message) {
-        super(message);
-    }
+	public UserDefineException(String message) {
+		super(message);
+	}
 
-    @Builder
-    public UserDefineException(String originalMessage, boolean success) {
-        this.originalErrorMessage = originalMessage;
-        this.success = success;
-    }
+	@Builder
+	public UserDefineException(String originalMessage, boolean success) {
+		this.originalErrorMessage = originalMessage;
+		this.success = success;
+	}
 }
